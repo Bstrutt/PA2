@@ -3,15 +3,15 @@ package pa2;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class WGraph {
 	int numVertex;
 	int numEdges;
-	LinkedList<LinkedList<edge>> adjList;		//array of linked lists representing edges of each vertex
-	LinkedList<vertex> vertexList; 	//known vertices list
+	LinkedList<LinkedList<Edge>> adjList;		//array of linked lists representing edges of each vertex
+	LinkedList<Vertex> vertexList; 	//known vertices list
 	boolean unknownVertex;
 	
 	WGraph(String FName) throws FileNotFoundException{
@@ -23,7 +23,7 @@ public class WGraph {
 		
 		adjList = new LinkedList<>();
 		for(int i = 0; i <numVertex; i++) {
-			adjList.set(i, new LinkedList<edge>());	// Populates the array with empty LinkedLists
+			adjList.set(i, new LinkedList<Edge>());	// Populates the array with empty LinkedLists
 		}
 		
 		
@@ -31,7 +31,7 @@ public class WGraph {
 			unknownVertex = true;
 			
 			// Create a temporary vertex for the newest edge
-			vertex tempVertex = new vertex(s.nextInt(), s.nextInt());
+			Vertex tempVertex = new Vertex(s.nextInt(), s.nextInt());
 			
 			/* 		Checks to see if the vertex is previously known
 			 		Probably more efficent ways to do this, see if there is a fix
@@ -49,10 +49,10 @@ public class WGraph {
 				//This ugly fothermucker adds a vertex to the vertex list, then appends a new edge to the corresponding 
 				//edge list of that vertex. Only if we didn't previously know the vertex; 
 				vertexList.add(tempVertex);
-				adjList.get(adjList.size()).add(new edge(tempVertex, new vertex(s.nextInt(), s.nextInt()), s.nextInt()));
+				adjList.get(adjList.size()).add(new Edge(tempVertex, new Vertex(s.nextInt(), s.nextInt()), s.nextInt()));
 			} else {
 				//This guy adds a new edge at the location of the known vertex.
-				adjList.get(i).add(new edge(tempVertex, new vertex(s.nextInt(), s.nextInt()), s.nextInt()));
+				adjList.get(i).add(new Edge(tempVertex, new Vertex(s.nextInt(), s.nextInt()), s.nextInt()));
 			}
 			
 			
