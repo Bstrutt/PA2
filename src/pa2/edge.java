@@ -1,10 +1,10 @@
 package pa2;
 
-public class edge {
+public class Edge {
 	int weight;
-	vertex from;
-	vertex to;
-	edge(vertex from, vertex to, int weight){
+	Vertex from;
+	Vertex to;
+	Edge(Vertex from, Vertex to, int weight){
 		this.from = from;
 		this.to = to;
 		this.weight = weight;
