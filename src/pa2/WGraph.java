@@ -36,7 +36,7 @@ public class WGraph {
 			/* 		Checks to see if the vertex is previously known
 			 		Probably more efficent ways to do this, see if there is a fix
 					Maybe something native to LinkedLists I don't know about?
-					declare i outside so we can use it for referencing vertices later
+					Declare i outside of the for loop so we can use it for referencing vertices later
 			*/
 			int i;
 			for(i = 0; i < vertexList.size(); i++) {
