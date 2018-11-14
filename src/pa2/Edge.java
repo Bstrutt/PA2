@@ -9,4 +9,8 @@ public class Edge {
 		this.to = to;
 		this.weight = weight;
 	}
+	public String toString() {
+		String output = "From:" + from + " To:" + to + " Weight: " + weight;		
+		return output;
+	}
 }

@@ -10,4 +10,8 @@ public class Vertex {
 		ycoord = y;
 
 	}
+	public String toString(){
+		String output = "(" + xcoord + "," + ycoord + ")";
+		return output;
+	}
 }

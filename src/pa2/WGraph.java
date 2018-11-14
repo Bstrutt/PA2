@@ -15,16 +15,16 @@ public class WGraph {
 	boolean unknownVertex;
 	
 	WGraph(String FName) throws FileNotFoundException{
-		File f = new File(FName);
+		String cwd = new File("").getAbsolutePath();
+		//System.out.println(cwd);
+		File f = new File(cwd + "\\src\\pa2\\" + FName);
 		Scanner s = new Scanner(f);
 		
 		numVertex = s.nextInt();				// gets the number of vertices
 		numEdges = s.nextInt();					// gets the number of edges (doesn't do much yet)
 		
 		adjList = new LinkedList<>();
-		for(int i = 0; i <numVertex; i++) {
-			adjList.set(i, new LinkedList<Edge>());	// Populates the array with empty LinkedLists
-		}
+		vertexList = new LinkedList<>();
 		
 		
 		while(s.hasNextInt()) {
@@ -48,8 +48,9 @@ public class WGraph {
 			if(unknownVertex) {
 				//This ugly fothermucker adds a vertex to the vertex list, then appends a new edge to the corresponding 
 				//edge list of that vertex. Only if we didn't previously know the vertex; 
-				vertexList.add(tempVertex);
-				adjList.get(adjList.size()).add(new Edge(tempVertex, new Vertex(s.nextInt(), s.nextInt()), s.nextInt()));
+				vertexList.addLast(tempVertex);
+				adjList.addLast(new LinkedList<Edge>());
+				adjList.get(adjList.size() - 1).addLast(new Edge(tempVertex, new Vertex(s.nextInt(), s.nextInt()), s.nextInt()));
 			} else {
 				//This guy adds a new edge at the location of the known vertex.
 				adjList.get(i).add(new Edge(tempVertex, new Vertex(s.nextInt(), s.nextInt()), s.nextInt()));
